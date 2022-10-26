@@ -1,0 +1,77 @@
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+  --color-orange-100: #FE5000;
+  --color-green-100: #9BA4A8;
+  --color-green-200: #305362;
+  --color-green-300: #1B3B48;
+  --color-green-400: #041C26;
+
+  --text-primary: var(--color-white);
+  --text-secondary: var(--color-green-100);
+  --text-highlight: var(--color-orange-100);
+
+  --bg-primary: var(--color-green-300);
+  --bg-secodary: var(--color-green-200);
+  --bg-alt: var(--color-black);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+  pointer-events: none;
+}
+
+.underlined {
+  position: relative;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.underlined:focus {
+  outline: none;
+  text-decoration: none !important;
+}
+
+.underlined:after {
+  content: '';
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  transform-origin: left;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  display: block;
+  position: absolute;
+}
+
+.underlined:hover:after,
+.underlined:focus:after,
+.active.underlined:after {
+  background-color: currentColor;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion) {
+  .underlined:after {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .underlined:hover:after,
+  .underlined:focus:after,
+  .active.underlined:after {
+    opacity: 1;
+  }
+}
